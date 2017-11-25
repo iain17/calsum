@@ -33,25 +33,16 @@ class SettingsViewController: FormViewController {
                 row.options.append(date)
                 date = Foundation.Calendar.current.date(byAdding: .month, value: 1, to: date)!
             }
-            row.value = row.options[0]
+            row.value = Settings.Q1Start
         }
         q1.cellUpdate({ (cell, row) in
             if let date = row.value {
-                self.setQ1(date)
+                Settings.Q1Start = date
             }
         })
-        if UserDefaults.standard.string(forKey: "q1") == nil {
-            if let date = q1.value {
-                setQ1(date)
-            }
-        }
-        
+    
         self.form +++ Section("Quarter settings")
             <<< q1
-    }
-    
-    func setQ1(_ date: Date) {
-        UserDefaults.standard.set("q1", forKey: String(Foundation.Calendar.current.component(.month, from: date)))
     }
 
 }
