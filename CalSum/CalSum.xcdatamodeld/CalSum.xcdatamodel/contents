@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B48" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Calendar" representedClassName=".Calendar" syncable="YES" codeGenerationType="category">
-        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="id" attributeType="String" syncable="YES"/>
         <attribute name="source" attributeType="String" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
-        <relationship name="goals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goals" inverseName="calendar" inverseEntity="Goals" syncable="YES"/>
+        <relationship name="goals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="calendar" inverseEntity="Goal" syncable="YES"/>
     </entity>
-    <entity name="Goals" representedClassName="Goals" syncable="YES" codeGenerationType="class">
+    <entity name="Goal" representedClassName=".Goal" syncable="YES" codeGenerationType="class">
         <attribute name="from" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="till" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
-        <relationship name="calendar" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Calendar" inverseName="goals" inverseEntity="Calendar" syncable="YES"/>
+        <relationship name="calendar" maxCount="1" deletionRule="Nullify" destinationEntity="Calendar" inverseName="goals" inverseEntity="Calendar" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Calendar" positionX="-45" positionY="-243" width="128" height="118"/>
-        <element name="Goals" positionX="-47" positionY="23" width="128" height="103"/>
+        <element name="Calendar" positionX="-45" positionY="-243" width="128" height="120"/>
+        <element name="Goal" positionX="-47" positionY="23" width="128" height="105"/>
     </elements>
 </model>

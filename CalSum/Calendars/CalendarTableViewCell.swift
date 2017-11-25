@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import EventKit
 
 class CalendarTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel?

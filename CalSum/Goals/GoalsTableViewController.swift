@@ -8,76 +8,82 @@
 
 import UIKit
 import EventKit
+import CoreData
 
 class GoalsTableViewController: UITableViewController {
     
     public var calendar:Calendar!
+    fileprivate let coreDataManager = CoreDataManager(modelName: "CalSum")
+    
+    fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Goal> = {
+        // Create Fetch Request
+        let fetchRequest: NSFetchRequest<Goal> = Goal.fetchRequest()
+        
+        // Configure Fetch Request
+        fetchRequest.predicate = NSPredicate(format: "calendar.id = %@", calendar.id!)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "from", ascending: false)]
+        
+        // Create Fetched Results Controller
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataManager.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
+        
+        // Configure Fetched Results Controller
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
     override func viewDidLoad() {
         self.title = calendar.title
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            let fetchError = error as NSError
+            print("Unable to fetch goals")
+            print("\(fetchError), \(fetchError.localizedDescription)")
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        guard let sections = fetchedResultsController.sections else {
+            return 0
+        }
+        
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
     }
 
-    /*
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        guard editingStyle == .delete else { return }
+        let object = fetchedResultsController.object(at: indexPath)
+        fetchedResultsController.managedObjectContext.delete(object)
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarsTableViewController.reuseIdentifier, for: indexPath) as? GoalTableViewCell else {
+            fatalError("Unexpected Index Path")
+        }
+        
+        let goal = fetchedResultsController.object(at: indexPath)
+        cell.goal = goal
+        
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+//        if let indexPath = self.tableView.indexPathForSelectedRow {
+//            if let goalsTVC = segue.destination as? GoalsTableViewController {
+//                goalsTVC.calendar = fetchedResultsController.object(at: indexPath)
+//            }
+//        }
     }
-    */
-
+    
 }
