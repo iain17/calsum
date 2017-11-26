@@ -15,9 +15,9 @@
 		271C39A31FC9980300723C14 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C39A21FC9980300723C14 /* UITableViewController.swift */; };
 		271C39A61FC99D6600723C14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C39A51FC99D6600723C14 /* CoreDataManager.swift */; };
 		272FD9321FC9B13100AE39D4 /* GoalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272FD9311FC9B13100AE39D4 /* GoalsTableViewCell.swift */; };
+		276A0C351FCA3CD1000D0244 /* CalSumBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */; };
 		276DB6251FC9FF7A00B59554 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276DB6241FC9FF7A00B59554 /* Goal.swift */; };
 		27C849F11FC87B3200B84DC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C849F01FC87B3200B84DC4 /* AppDelegate.swift */; };
-		27C849F31FC87B3200B84DC4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C849F21FC87B3200B84DC4 /* ViewController.swift */; };
 		27C849F61FC87B3200B84DC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C849F41FC87B3200B84DC4 /* Main.storyboard */; };
 		27C849F91FC87B3200B84DC4 /* CalSum.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 27C849F71FC87B3200B84DC4 /* CalSum.xcdatamodeld */; };
 		27C849FE1FC87B3200B84DC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27C849FC1FC87B3200B84DC4 /* LaunchScreen.storyboard */; };
@@ -37,10 +37,10 @@
 		271C39A21FC9980300723C14 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		271C39A51FC99D6600723C14 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		272FD9311FC9B13100AE39D4 /* GoalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableViewCell.swift; sourceTree = "<group>"; };
+		276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalSumBrain.swift; sourceTree = "<group>"; };
 		276DB6241FC9FF7A00B59554 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		27C849ED1FC87B3200B84DC4 /* CalSum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalSum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C849F01FC87B3200B84DC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27C849F21FC87B3200B84DC4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		27C849F51FC87B3200B84DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27C849F81FC87B3200B84DC4 /* CalSum.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CalSum.xcdatamodel; sourceTree = "<group>"; };
 		27C849FD1FC87B3200B84DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +128,7 @@
 		27C849EF1FC87B3200B84DC4 /* CalSum */ = {
 			isa = PBXGroup;
 			children = (
+				276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */,
 				271A80241FC9CCDC00C2BF34 /* Settings */,
 				271A801F1FC9B5DF00C2BF34 /* Goal */,
 				271C39A41FC99D5200723C14 /* Managers */,
@@ -136,7 +137,6 @@
 				27C84A0B1FC88A8300B84DC4 /* Goals */,
 				27C84A061FC87C9900B84DC4 /* Calendars */,
 				27C84A051FC87B4D00B84DC4 /* Supporting files */,
-				27C849F21FC87B3200B84DC4 /* ViewController.swift */,
 				27C849F71FC87B3200B84DC4 /* CalSum.xcdatamodeld */,
 				27C849F41FC87B3200B84DC4 /* Main.storyboard */,
 				27C849FF1FC87B3200B84DC4 /* Info.plist */,
@@ -321,7 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				271A80211FC9B60C00C2BF34 /* GoalViewController.swift in Sources */,
-				27C849F31FC87B3200B84DC4 /* ViewController.swift in Sources */,
 				27C849F11FC87B3200B84DC4 /* AppDelegate.swift in Sources */,
 				27C849F91FC87B3200B84DC4 /* CalSum.xcdatamodeld in Sources */,
 				271A802C1FC9E79900C2BF34 /* Settings.swift in Sources */,
@@ -333,6 +332,7 @@
 				27C84A0D1FC8918600B84DC4 /* GoalsTableViewController.swift in Sources */,
 				27C84A081FC87CB300B84DC4 /* CalendarsTableViewController.swift in Sources */,
 				271C39A61FC99D6600723C14 /* CoreDataManager.swift in Sources */,
+				276A0C351FCA3CD1000D0244 /* CalSumBrain.swift in Sources */,
 				276DB6251FC9FF7A00B59554 /* Goal.swift in Sources */,
 				271A80261FC9CD7100C2BF34 /* SettingsViewController.swift in Sources */,
 			);

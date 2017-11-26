@@ -116,7 +116,7 @@ class GoalViewController: FormViewController {
 //                row.value = row.options[0]
 //        }
 //    }
-    
+//
 //    func buildYearRange() {
 //        self.form +++ Section("Year goal") {
 //            $0.hidden = "$goalType != 'Year'"

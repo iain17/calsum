@@ -11,6 +11,8 @@ import CoreData
 import EventKit
 
 public class Calendar: NSManagedObject {
+    let eventStore = EKEventStore()
+    
     static func upsert(rawCalendar: EKCalendar, in context: NSManagedObjectContext) throws -> Calendar
     {
         let request: NSFetchRequest<Calendar> = Calendar.fetchRequest()
@@ -39,6 +41,25 @@ public class Calendar: NSManagedObject {
         }
         return calendar
     }
+    
+    private func getCalendar(_ id: String) -> EKCalendar? {
+        let calendars = eventStore.calendars(for: .event)
+        for calendar in calendars {
+            if id == calendar.id {
+                return calendar
+            }
+        }
+        return nil
+    }
+    
+    func getEvents(from: Date, till: Date) -> [EKEvent] {
+        if let calendar = self.getCalendar(self.id!) {
+            let predicate = eventStore.predicateForEvents(withStart: from, end: till, calendars: [calendar])
+            return eventStore.events(matching: predicate)
+        }
+        return []
+    }
+    
 }
 
 

@@ -17,9 +17,15 @@ class GoalTableViewCell: UITableViewCell {
     public var goal:Goal? {
         didSet {
             name.text = goal?.name
-            percentage.text = "0%"
+            percentage.text = "..."
             progress.progress = 0
+            calcProgress()
         }
+    }
+    
+    func calcProgress() {
+        let events = self.goal!.calendar!.getEvents(from: self.goal!.from!, till: self.goal!.till!)
+        print(events)
     }
     
     override func awakeFromNib() {
