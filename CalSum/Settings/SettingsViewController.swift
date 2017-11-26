@@ -15,6 +15,7 @@ class SettingsViewController: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         quarterSettings()
+        defaultSettings()
     }
     
     func quarterSettings() {
@@ -43,6 +44,25 @@ class SettingsViewController: FormViewController {
     
         self.form +++ Section("Quarter settings")
             <<< q1
+    }
+    
+    func defaultSettings() {
+       self.form +++ Section("Default settings")
+        <<< DecimalRow() {
+            $0.title = "Hours"
+            $0.value = Double(Settings.DefaultHours)
+            let formatter = DecimalFormatter()
+            formatter.maximumFractionDigits = 0
+            formatter.generatesDecimalNumbers = false
+            $0.formatter = formatter
+            $0.useFormatterDuringInput = true
+            }.cellSetup { cell, _  in
+                cell.textField.keyboardType = .numberPad
+            }.cellUpdate { (cell, row) in
+                if let value = row.value {
+                    Settings.DefaultHours = Int(value)
+                }
+        }
     }
 
 }

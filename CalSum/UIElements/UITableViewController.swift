@@ -13,10 +13,12 @@ import UIKit
 extension UITableViewController: NSFetchedResultsControllerDelegate {
     
     public func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.refreshControl?.beginRefreshing()
         self.tableView.beginUpdates()
     }
     
     public func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.refreshControl?.endRefreshing()
         self.tableView.endUpdates()
     }
     

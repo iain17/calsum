@@ -11,9 +11,9 @@ import EventKit
 import CoreData
 
 class CalendarsTableViewController: UITableViewController {
-    static let reuseIdentifier = "CalendarCell"
+    let reuseIdentifier = "CalendarCell"
     let eventStore = EKEventStore()
-    fileprivate let coreDataManager = CoreDataManager(modelName: "CalSum")
+    fileprivate let coreDataManager = (UIApplication.shared.delegate as! AppDelegate).coreDataManager
 
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Calendar> = {
         // Create Fetch Request
@@ -33,7 +33,6 @@ class CalendarsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControlEvents.valueChanged)
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -44,11 +43,11 @@ class CalendarsTableViewController: UITableViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        refresh()
+        refresh(true)
         self.tableView.reloadData()
     }
     
-    @objc func refresh() {
+    @IBAction func refresh(_ sender: Any) {
         self.eventStore.requestAccess(to: .event) { [weak self] (granted, error) in
             if !granted {
                 self?.showError(title: "No permissions!", message: "Failed to receive Calendar permissions. Please try again.")
@@ -107,7 +106,7 @@ class CalendarsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarsTableViewController.reuseIdentifier, for: indexPath) as? CalendarTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath) as? CalendarTableViewCell else {
             fatalError("Unexpected Index Path")
         }
         
@@ -117,7 +116,6 @@ class CalendarsTableViewController: UITableViewController {
         return cell
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let indexPath = self.tableView.indexPathForSelectedRow {
             if let goalsTVC = segue.destination as? GoalsTableViewController {

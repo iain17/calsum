@@ -28,4 +28,20 @@ class Settings {
         }
     }
     
+    static var DefaultHours: Int {
+        get {
+            if let rawValue = UserDefaults.standard.string(forKey: constants.PREF_HOURS) {
+                if let value = Int(rawValue) {
+                    return value
+                }
+            }
+            return 1225//https://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/winst/inkomstenbelasting/inkomstenbelasting_voor_ondernemers/voorwaarden_urencriterium
+        }
+        set {
+            let value = String(newValue)
+            UserDefaults.standard.set(value, forKey: constants.PREF_HOURS)
+            UserDefaults.standard.synchronize()
+        }
+    }
+    
 }

@@ -10,4 +10,5 @@ import Foundation
 
 class constants {
     static var PREF_Q1 = "q1"
+    static var PREF_HOURS = "goal_hours"
 }

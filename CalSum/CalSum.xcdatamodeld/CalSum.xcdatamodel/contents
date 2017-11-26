@@ -7,14 +7,16 @@
         <attribute name="title" attributeType="String" syncable="YES"/>
         <relationship name="goals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Goal" inverseName="calendar" inverseEntity="Goal" syncable="YES"/>
     </entity>
-    <entity name="Goal" representedClassName=".Goal" syncable="YES" codeGenerationType="class">
+    <entity name="Goal" representedClassName=".Goal" syncable="YES" codeGenerationType="category">
         <attribute name="from" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="hours" attributeType="Integer 32" minValueString="0" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" attributeType="String" syncable="YES"/>
         <attribute name="till" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="type" attributeType="String" syncable="YES"/>
         <relationship name="calendar" maxCount="1" deletionRule="Nullify" destinationEntity="Calendar" inverseName="goals" inverseEntity="Calendar" syncable="YES"/>
     </entity>
     <elements>
         <element name="Calendar" positionX="-45" positionY="-243" width="128" height="120"/>
-        <element name="Goal" positionX="-47" positionY="23" width="128" height="105"/>
+        <element name="Goal" positionX="-47" positionY="23" width="128" height="135"/>
     </elements>
 </model>

@@ -11,9 +11,9 @@ import EventKit
 import CoreData
 
 class GoalsTableViewController: UITableViewController {
-    
+    let reuseIdentifier = "GoalCell"
     public var calendar:Calendar!
-    fileprivate let coreDataManager = CoreDataManager(modelName: "CalSum")
+    fileprivate let coreDataManager = (UIApplication.shared.delegate as! AppDelegate).coreDataManager
     
     fileprivate lazy var fetchedResultsController: NSFetchedResultsController<Goal> = {
         // Create Fetch Request
@@ -33,7 +33,12 @@ class GoalsTableViewController: UITableViewController {
     }()
     
     override func viewDidLoad() {
-        self.title = calendar.title
+        self.title = "\(calendar.title!) goals"
+        refresh(1)
+        self.refreshControl?.endRefreshing()
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -64,10 +69,11 @@ class GoalsTableViewController: UITableViewController {
         guard editingStyle == .delete else { return }
         let object = fetchedResultsController.object(at: indexPath)
         fetchedResultsController.managedObjectContext.delete(object)
+        try? fetchedResultsController.managedObjectContext.save()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CalendarsTableViewController.reuseIdentifier, for: indexPath) as? GoalTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath) as? GoalTableViewCell else {
             fatalError("Unexpected Index Path")
         }
         
@@ -79,11 +85,26 @@ class GoalsTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let indexPath = self.tableView.indexPathForSelectedRow {
-//            if let goalsTVC = segue.destination as? GoalsTableViewController {
-//                goalsTVC.calendar = fetchedResultsController.object(at: indexPath)
-//            }
-//        }
+        if let desination = segue.destination as? GoalViewController {
+            if let identifier = segue.identifier{
+                switch(identifier) {
+                case "editGoal":
+                    if let indexPath = self.tableView.indexPathForSelectedRow {
+                        desination.goal = fetchedResultsController.object(at: indexPath)
+                    }
+                    break
+                case "addGoal":
+                    desination.goal = Goal(context: self.fetchedResultsController.managedObjectContext)
+                    desination.goal.resetToDefaults()
+                    desination.goal.calendar = self.calendar
+                    break
+                default:
+                    print("dunno what to do with \(identifier)")
+                    break
+                }
+                
+            }
+        }
     }
     
 }
