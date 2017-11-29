@@ -52,7 +52,7 @@ public class Calendar: NSManagedObject {
         return nil
     }
     
-    func getEvents(from: Date, till: Date) -> [EKEvent] {
+    public func getEvents(from: Date, till: Date) -> [EKEvent] {
         if let calendar = self.getCalendar(self.id!) {
             let predicate = eventStore.predicateForEvents(withStart: from, end: till, calendars: [calendar])
             return eventStore.events(matching: predicate)

@@ -13,19 +13,26 @@ class GoalTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var percentage: UILabel!
     @IBOutlet weak var progress: UIProgressView!
+    var brain: CalSumBrain?
     
     public var goal:Goal? {
         didSet {
             name.text = goal?.name
             percentage.text = "..."
             progress.progress = 0
+            if goal != nil  {
+                self.brain = CalSumBrain(goal: goal!)
+            }
             calcProgress()
         }
     }
     
     func calcProgress() {
-        let events = self.goal!.calendar!.getEvents(from: self.goal!.from!, till: self.goal!.till!)
-        print(events)
+        if let brain = self.brain {
+            brain.getTotalHours(completion: { (result) in
+                print(result)
+            })
+        }
     }
     
     override func awakeFromNib() {

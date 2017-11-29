@@ -15,6 +15,9 @@
 		271C39A31FC9980300723C14 /* UITableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C39A21FC9980300723C14 /* UITableViewController.swift */; };
 		271C39A61FC99D6600723C14 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271C39A51FC99D6600723C14 /* CoreDataManager.swift */; };
 		272FD9321FC9B13100AE39D4 /* GoalsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272FD9311FC9B13100AE39D4 /* GoalsTableViewCell.swift */; };
+		27569D191FCE22EE00A946CE /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27569D181FCE22EE00A946CE /* Day.swift */; };
+		27569D211FCE274F00A946CE /* DayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27569D201FCE274F00A946CE /* DayTests.swift */; };
+		27569D281FCE27A900A946CE /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27569D181FCE22EE00A946CE /* Day.swift */; };
 		276A0C351FCA3CD1000D0244 /* CalSumBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */; };
 		276DB6251FC9FF7A00B59554 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 276DB6241FC9FF7A00B59554 /* Goal.swift */; };
 		27C849F11FC87B3200B84DC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C849F01FC87B3200B84DC4 /* AppDelegate.swift */; };
@@ -28,6 +31,16 @@
 		4520441250BE821058C42856 /* Pods_CalSum.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 627F6F155883FBCC7EB59C35 /* Pods_CalSum.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		27569D231FCE274F00A946CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 27C849E51FC87B3200B84DC4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 27C849EC1FC87B3200B84DC4;
+			remoteInfo = CalSum;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		271A80201FC9B60C00C2BF34 /* GoalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewController.swift; sourceTree = "<group>"; };
 		271A80221FC9C91900C2BF34 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +50,10 @@
 		271C39A21FC9980300723C14 /* UITableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewController.swift; sourceTree = "<group>"; };
 		271C39A51FC99D6600723C14 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		272FD9311FC9B13100AE39D4 /* GoalsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsTableViewCell.swift; sourceTree = "<group>"; };
+		27569D181FCE22EE00A946CE /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		27569D1E1FCE274F00A946CE /* CalSumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CalSumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27569D201FCE274F00A946CE /* DayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayTests.swift; sourceTree = "<group>"; };
+		27569D221FCE274F00A946CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalSumBrain.swift; sourceTree = "<group>"; };
 		276DB6241FC9FF7A00B59554 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		27C849ED1FC87B3200B84DC4 /* CalSum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CalSum.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,6 +72,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		27569D1B1FCE274F00A946CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27C849EA1FC87B3200B84DC4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,10 +131,29 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		27569D171FCE22DE00A946CE /* Brain */ = {
+			isa = PBXGroup;
+			children = (
+				276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */,
+				27569D181FCE22EE00A946CE /* Day.swift */,
+			);
+			path = Brain;
+			sourceTree = "<group>";
+		};
+		27569D1F1FCE274F00A946CE /* CalSumTests */ = {
+			isa = PBXGroup;
+			children = (
+				27569D201FCE274F00A946CE /* DayTests.swift */,
+				27569D221FCE274F00A946CE /* Info.plist */,
+			);
+			path = CalSumTests;
+			sourceTree = "<group>";
+		};
 		27C849E41FC87B3200B84DC4 = {
 			isa = PBXGroup;
 			children = (
 				27C849EF1FC87B3200B84DC4 /* CalSum */,
+				27569D1F1FCE274F00A946CE /* CalSumTests */,
 				27C849EE1FC87B3200B84DC4 /* Products */,
 				9CCA600BC147D981869E76B3 /* Pods */,
 				2137A23348F42D9B5F62B541 /* Frameworks */,
@@ -121,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				27C849ED1FC87B3200B84DC4 /* CalSum.app */,
+				27569D1E1FCE274F00A946CE /* CalSumTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +172,7 @@
 		27C849EF1FC87B3200B84DC4 /* CalSum */ = {
 			isa = PBXGroup;
 			children = (
-				276A0C341FCA3CD1000D0244 /* CalSumBrain.swift */,
+				27569D171FCE22DE00A946CE /* Brain */,
 				271A80241FC9CCDC00C2BF34 /* Settings */,
 				271A801F1FC9B5DF00C2BF34 /* Goal */,
 				271C39A41FC99D5200723C14 /* Managers */,
@@ -194,6 +238,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		27569D1D1FCE274F00A946CE /* CalSumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27569D251FCE274F00A946CE /* Build configuration list for PBXNativeTarget "CalSumTests" */;
+			buildPhases = (
+				27569D1A1FCE274F00A946CE /* Sources */,
+				27569D1B1FCE274F00A946CE /* Frameworks */,
+				27569D1C1FCE274F00A946CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				27569D241FCE274F00A946CE /* PBXTargetDependency */,
+			);
+			name = CalSumTests;
+			productName = CalSumTests;
+			productReference = 27569D1E1FCE274F00A946CE /* CalSumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		27C849EC1FC87B3200B84DC4 /* CalSum */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27C84A021FC87B3200B84DC4 /* Build configuration list for PBXNativeTarget "CalSum" */;
@@ -224,6 +286,11 @@
 				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "Iain Munro";
 				TargetAttributes = {
+					27569D1D1FCE274F00A946CE = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 27C849EC1FC87B3200B84DC4;
+					};
 					27C849EC1FC87B3200B84DC4 = {
 						CreatedOnToolsVersion = 9.1;
 						ProvisioningStyle = Automatic;
@@ -244,11 +311,19 @@
 			projectRoot = "";
 			targets = (
 				27C849EC1FC87B3200B84DC4 /* CalSum */,
+				27569D1D1FCE274F00A946CE /* CalSumTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		27569D1C1FCE274F00A946CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27C849EB1FC87B3200B84DC4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,12 +391,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		27569D1A1FCE274F00A946CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27569D281FCE27A900A946CE /* Day.swift in Sources */,
+				27569D211FCE274F00A946CE /* DayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27C849E91FC87B3200B84DC4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				271A80211FC9B60C00C2BF34 /* GoalViewController.swift in Sources */,
 				27C849F11FC87B3200B84DC4 /* AppDelegate.swift in Sources */,
+				27569D191FCE22EE00A946CE /* Day.swift in Sources */,
 				27C849F91FC87B3200B84DC4 /* CalSum.xcdatamodeld in Sources */,
 				271A802C1FC9E79900C2BF34 /* Settings.swift in Sources */,
 				271C39A31FC9980300723C14 /* UITableViewController.swift in Sources */,
@@ -339,6 +424,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		27569D241FCE274F00A946CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 27C849EC1FC87B3200B84DC4 /* CalSum */;
+			targetProxy = 27569D231FCE274F00A946CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		27C849F41FC87B3200B84DC4 /* Main.storyboard */ = {
@@ -360,6 +453,38 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		27569D261FCE274F00A946CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6BSBW655NT;
+				INFOPLIST_FILE = CalSumTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iMunro.CalSumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalSum.app/CalSum";
+			};
+			name = Debug;
+		};
+		27569D271FCE274F00A946CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6BSBW655NT;
+				INFOPLIST_FILE = CalSumTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iMunro.CalSumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CalSum.app/CalSum";
+			};
+			name = Release;
+		};
 		27C84A001FC87B3200B84DC4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -473,7 +598,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C8466875AK;
+				DEVELOPMENT_TEAM = 6BSBW655NT;
 				INFOPLIST_FILE = CalSum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iMunro.CalSum;
@@ -489,7 +614,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C8466875AK;
+				DEVELOPMENT_TEAM = 6BSBW655NT;
 				INFOPLIST_FILE = CalSum/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iMunro.CalSum;
@@ -502,6 +627,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		27569D251FCE274F00A946CE /* Build configuration list for PBXNativeTarget "CalSumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27569D261FCE274F00A946CE /* Debug */,
+				27569D271FCE274F00A946CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		27C849E81FC87B3200B84DC4 /* Build configuration list for PBXProject "CalSum" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

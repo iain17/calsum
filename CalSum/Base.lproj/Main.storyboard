@@ -113,6 +113,9 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="W4V-OH-tpw">
+                                            <rect key="frame" x="314" y="12.5" width="20" height="20"/>
+                                        </activityIndicatorView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="W3J-WW-bYr" firstAttribute="top" secondItem="iJg-3r-8dF" secondAttribute="top" constant="12" id="Kua-Ny-Kz8"/>
@@ -120,10 +123,12 @@
                                         <constraint firstItem="amm-gK-Fkl" firstAttribute="leading" secondItem="ov2-QB-ojS" secondAttribute="trailing" constant="8" id="RkK-IN-D9T"/>
                                         <constraint firstItem="amm-gK-Fkl" firstAttribute="top" secondItem="iJg-3r-8dF" secondAttribute="top" constant="21" id="Y88-g5-S0T"/>
                                         <constraint firstItem="ov2-QB-ojS" firstAttribute="centerY" secondItem="iJg-3r-8dF" secondAttribute="centerY" id="bgV-dL-fDH"/>
+                                        <constraint firstItem="W4V-OH-tpw" firstAttribute="centerX" secondItem="W3J-WW-bYr" secondAttribute="centerX" id="dae-Z7-c1o"/>
                                         <constraint firstAttribute="trailing" secondItem="W3J-WW-bYr" secondAttribute="trailing" id="kfw-qN-UN8"/>
                                         <constraint firstItem="W3J-WW-bYr" firstAttribute="leading" secondItem="amm-gK-Fkl" secondAttribute="trailing" constant="8" id="oYb-uP-Sw5"/>
                                         <constraint firstItem="amm-gK-Fkl" firstAttribute="centerY" secondItem="iJg-3r-8dF" secondAttribute="centerY" id="qbb-Xm-wba"/>
                                         <constraint firstItem="ov2-QB-ojS" firstAttribute="top" secondItem="iJg-3r-8dF" secondAttribute="top" constant="11" id="qgb-jY-Svv"/>
+                                        <constraint firstItem="W4V-OH-tpw" firstAttribute="centerY" secondItem="W3J-WW-bYr" secondAttribute="centerY" id="rdT-eB-77a"/>
                                         <constraint firstItem="ov2-QB-ojS" firstAttribute="leading" secondItem="iJg-3r-8dF" secondAttribute="leading" constant="5" id="ytP-zT-SPH"/>
                                     </constraints>
                                 </tableViewCellContentView>
