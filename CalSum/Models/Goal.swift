@@ -16,7 +16,7 @@ public class Goal: NSManagedObject {
         var till = Date()
         till = Foundation.Calendar.current.date(byAdding: .month, value: 1, to: till)!
         self.till = till
-        self.hours = Int32(Settings.DefaultHours)
+        self.hours = Double(Settings.DefaultHours)
         self.type = "Date range"
     }
 }

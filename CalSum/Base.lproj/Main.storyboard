@@ -104,7 +104,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="amm-gK-Fkl">
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="amm-gK-Fkl">
                                             <rect key="frame" x="108" y="21" width="191" height="2"/>
                                         </progressView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quater 2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov2-QB-ojS">
@@ -133,6 +133,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="loading" destination="W4V-OH-tpw" id="T1G-7p-DMq"/>
                                     <outlet property="name" destination="ov2-QB-ojS" id="gDS-t3-S3W"/>
                                     <outlet property="percentage" destination="W3J-WW-bYr" id="sXx-4g-n7D"/>
                                     <outlet property="progress" destination="amm-gK-Fkl" id="hsw-PQ-Atg"/>

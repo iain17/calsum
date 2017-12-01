@@ -9,13 +9,17 @@
 import Foundation
 
 class Day {
-    let date: Date
+    //Start of the day
+    public let start: Date
+    //End of the day
+    public let end: Date
     var seconds = [UInt8](repeating: 0, count: 86400)//A day counts 86400 seconds
     private(set) var totalSecondsBooked = 0
     private(set) var totalSecondsOverbooked = 0
     
     init(date: Date, yesterdaySecondsOverbooked: Int = 0) {
-        self.date = Foundation.Calendar.current.startOfDay(for: date)
+        self.start = Foundation.Calendar.current.startOfDay(for: date)
+        self.end = Day.endOfDay(rawDate: self.start)
         
         //Handle overbooking from the previous day.
         var till = yesterdaySecondsOverbooked
@@ -58,7 +62,7 @@ class Day {
     }
     
     internal func dateToSeconds(_ date: Date) -> Int {
-        return Int(date.timeIntervalSince(self.date))
+        return Int(date.timeIntervalSince(self.start))
     }
     
 //    private func lock(_ obj: Any, blk:() -> ()) {

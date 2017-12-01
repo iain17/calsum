@@ -14,43 +14,39 @@ class CalSumBrain {
         self.goal = goal
     }
     
+    public func getPercentage(completion: @escaping (_ result: Double) -> Void) {
+        self.getTotalHours { (hours) in
+            let percentage = hours / self.goal.hours * 100
+            completion(percentage)
+        }
+    }
+    
     public func getTotalHours(completion: @escaping (_ result: Double) -> Void) {
-        DispatchQueue.global().async {
+        DispatchQueue.global(qos: .background).async {
+            var currDate = self.goal.from!
+            var overbooked = 0
             var hours = 0.0
-            if var events = self.goal.calendar?.getEvents(from: self.goal.from!, till: self.goal.till!) {
-                events = events.sorted(by: { (A, B) -> Bool in
-                    return A.startDate < B.startDate
-                })
-                for event in events {
-                    if self.isOverlapped(event: event) {
-                        continue
-                    }
-                    hours += self.getHoursBetween(event.startDate, event.endDate)
-                }
+            while(currDate <= self.goal.till!) {
+                let day = self.getTotalHourOfDay(day: currDate, overbooked: overbooked)
+                overbooked = day.totalSecondsOverbooked
+                hours += CalSumBrain.secondsToHours(seconds: day.totalSecondsBooked)
+                currDate = Foundation.Calendar.current.date(byAdding: .day, value: 1, to: currDate)!
             }
             completion(hours)
         }
     }
     
-    private func isOverlapped(event: EKEvent) -> Bool {
-        //An all day event will always overlap.
-        if event.isAllDay {
-            return true
-        }
-        //Check if any of the events are not our event id
-        if let events = self.goal.calendar?.getEvents(from: event.startDate, till: event.endDate) {
-            //If there is more than one. There will be overlap!
-            if events.count != 1 {
-                return true
+    private func getTotalHourOfDay(day: Date, overbooked: Int) -> Day {
+        let result = Day(date: day, yesterdaySecondsOverbooked: overbooked)
+        if let events = self.goal.calendar?.getEvents(from: result.start, till: result.end) {
+            for event in events {
+                result.book(from: event.startDate, till: event.endDate)
             }
-            //Sanity: if the event id is the same we have not overlapped.
-            return events[0].eventIdentifier != event.eventIdentifier
         }
-        return true
+        return result
     }
     
-    private func getHoursBetween(_ start: Date, _ end: Date) -> Double {
-        return Double(end.timeIntervalSince(start)) / 60.0 / 60.0
+    class func secondsToHours(seconds: Int) -> Double {
+        return Double(seconds) / 60 / 60
     }
-    
 }

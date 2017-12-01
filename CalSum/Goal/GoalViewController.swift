@@ -152,7 +152,7 @@ class GoalViewController: FormViewController {
                     cell.textField.keyboardType = .numberPad
                 }.cellUpdate({ (cell, row) in
                     if let value = row.value {
-                        self.goal.hours = Int32(value)
+                        self.goal.hours = value
                     }
                 })
     }
